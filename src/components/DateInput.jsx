@@ -8,10 +8,10 @@ export default function DateInput() {
     const today = new Date();
     
     return (
-        <div>
-            Date:
-            <DatePicker selected={date} onChange={(date) => setDate(date)} dateFormat="dd/MM/yyyy" maxDate={today} minDate={null} placeholderText="dd/mm/yyyy" className="rounded border border-gray-500 ml-2" />
+        <div className="flex flex-row">
+            <label>Date</label>
             <FaCalendarAlt />
+            <DatePicker selected={date} onChange={(date) => setDate(date)} dateFormat="dd/MM/yyyy" maxDate={today} minDate={null} placeholderText="dd/mm/yyyy" className="rounded border border-gray-500 w-32"/>
         </div>
     );
 };
