@@ -10,7 +10,7 @@ export default function AddPage() {
         
             <Link to="/add/savings" className="py-4 px-9 min-w-32 border-solid border border-cyan-700 rounded text-center font-medium tracking-wider bg-cyan-600 hover:bg-cyan-500">Savings</Link>    
         </div>
-        <div className="mt-5 mx-20">
+        <div className="mt-3 mx-4">
             <Outlet />
         </div>
      </div>
