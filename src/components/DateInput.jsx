@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
-import { FaCalendarAlt } from 'react-icons/fa';
 
-export default function DateInput() {
+export default function DateInput({ label, id, placeholder, name }) {
     const [date, setDate] = useState(null);
     const today = new Date();
     
     return (
-        <div className="flex flex-row">
-            <label>Date</label>
-            <FaCalendarAlt />
-            <DatePicker selected={date} onChange={(date) => setDate(date)} dateFormat="dd/MM/yyyy" maxDate={today} minDate={null} placeholderText="dd/mm/yyyy" className="rounded border border-gray-500 w-32"/>
+        <div className="flex flex-col w-full gap-2">
+            <div className="flex justify-between">
+                <label htmlFor={id} className="font-semibold capitalize">
+                        {label}
+                </label>
+            </div>
+            
+                <DatePicker
+                    className="w-full p-2 font-medium border rounded-md border-slate-300 placeholder:opacity-60"
+                    name={name}
+                    selected={date}
+                    onChange={((date) => setDate(date))} 
+                    placeholderText={placeholder} 
+                    maxDate={today} 
+                    minDate={null} 
+                    dateFormat="dd/MM/yyyy" 
+                />
+        
         </div>
     );
 };

@@ -1,3 +1,16 @@
+export const date_validation = {
+    name: 'date',
+    label: 'date',
+    id: 'date',
+    placeholder: 'dd/mm/yyyy',
+    validation: {
+      required: {
+        value: true,
+        message: 'required',
+      },
+    },
+}
+
 export const name_validation = {
     name: 'name',
     label: 'name',
@@ -16,71 +29,75 @@ export const name_validation = {
     },
   }
   
-  export const desc_validation = {
+export const desc_validation = {
     name: 'description',
     label: 'description',
     multiline: true,
     id: 'description',
     placeholder: 'write description ...',
     validation: {
-      required: {
+        required: {
         value: true,
         message: 'required',
-      },
-      maxLength: {
+        },
+        maxLength: {
         value: 200,
         message: '200 characters max',
-      },
+        },
     },
-  }
-  
-  export const password_validation = {
+}
+
+export const password_validation = {
     name: 'password',
     label: 'password',
     type: 'password',
     id: 'password',
     placeholder: 'type password ...',
     validation: {
-      required: {
+        required: {
         value: true,
         message: 'required',
-      },
-      minLength: {
+        },
+        minLength: {
         value: 6,
         message: 'min 6 characters',
-      },
+        },
     },
-  }
-  
-  export const num_validation = {
+}
+
+export const num_validation = {
     name: 'num',
     label: 'number',
     type: 'number',
     id: 'num',
     placeholder: 'write a random number',
     validation: {
-      required: {
+        required: {
         value: true,
         message: 'required',
-      },
+        },
+        min: {
+          value: 0.1,
+          message: 'positive only',
+        },
     },
-  }
-  
-  export const email_validation = {
+}
+
+export const email_validation = {
     name: 'email',
     label: 'email address',
     type: 'email',
     id: 'email',
     placeholder: 'write a random email address',
     validation: {
-      required: {
+        required: {
         value: true,
         message: 'required',
-      },
-      pattern: {
+        },
+        pattern: {
         value:
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
         message: 'not valid',
-      },
+        },
     },
-  }
+}
