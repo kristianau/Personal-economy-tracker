@@ -11,12 +11,12 @@ export const date_validation = {
     },
 }
 
-export const name_validation = {
+export const income_validation = {
     name: 'name',
-    label: 'name',
+    label: 'Income',
     type: 'text',
     id: 'name',
-    placeholder: 'write your name ...',
+    placeholder: 'Source of income',
     validation: {
       required: {
         value: true,
@@ -65,12 +65,12 @@ export const password_validation = {
     },
 }
 
-export const num_validation = {
+export const amount_validation = {
     name: 'num',
-    label: 'number',
+    label: 'Amount',
     type: 'number',
     id: 'num',
-    placeholder: 'write a random number',
+    placeholder: 'Amount earned',
     validation: {
         required: {
         value: true,
