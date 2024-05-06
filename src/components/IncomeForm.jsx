@@ -1,10 +1,8 @@
 import { FormProvider, useForm } from "react-hook-form";
-import InputField from "./InputField";
-import { income_validation, amount_validation, date_validation } from "../utils/InputValidations";
 import { useState } from "react";
-import { BsFillCheckSquareFill } from 'react-icons/bs'
-import DateInput from "./DateInput";
-import { motion } from "framer-motion"
+import DataInputs from "./IncomeDataInput";
+
+import SuccessMessage from "./SuccessMessage";
 
 export default function IncomeForm() {
     const methods = useForm();
@@ -23,24 +21,11 @@ export default function IncomeForm() {
                 noValidate
                 className="container"
             >
-                <div className="grid gap-5 md:grid-cols-1">
-                    <InputField {...income_validation} />
-                    <InputField {...amount_validation} />
-                    <DateInput {...date_validation} />
-                </div>
+                <DataInputs />
+                
                 <div className="mt-5">
 
-                    {success && (
-                        <motion.div
-
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            className="flex items-center gap-1 mb-5 font-semibold text-green-500"
-                        >
-                            <BsFillCheckSquareFill /> Form has been submitted successfully
-                        </motion.div>
-                    )}
+                    <SuccessMessage success={success} />
 
                     <button
                         onClick={onSubmit}
