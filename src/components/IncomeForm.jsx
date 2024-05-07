@@ -29,7 +29,7 @@ export default function IncomeForm() {
 
                     <button
                         onClick={onSubmit}
-                        className="flex items-center gap-1 p-5 font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-800"
+                        className="flex items-center gap-1 p-5 font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600"
                     >
                         Submit Form
                     </button>
