@@ -1,5 +1,5 @@
 import Select from "react-select";
-import { savingsBuckets } from "../utils/SavingsOptions";
+import { savingsBuckets } from "../../utils/SavingsOptions";
 
 export default function SavingsBucketDropdown({ placeholder, field, id }) {
 

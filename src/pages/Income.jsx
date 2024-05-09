@@ -1,4 +1,4 @@
-import IncomeForm from "../components/IncomeForm";
+import IncomeForm from "../components/Forms/IncomeForm";
 
 export default function IncomePage() {
     return (

@@ -1,9 +1,12 @@
 import React from "react";
-import SavingsBucketDropdown from "./SavingsBucketDropdown";
+import DateContainer from "../BaseElements/DateContainer";
+import "react-datepicker/dist/react-datepicker.css"
 import { Controller, useFormContext } from "react-hook-form";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../Messages/ErrorMessage";
 
-export default function SavingsBucketInput({ label, id, placeholder }) {
+
+export default function DateInput({ label, id, placeholder }) {
+
 
     const { control } = useFormContext();
 
@@ -17,7 +20,6 @@ export default function SavingsBucketInput({ label, id, placeholder }) {
                     required: 'required',
                 }}
                 render={({ field, fieldState: { error } }) => (
-
                     <div className="flex flex-col gap-2">
                         <div className="flex justify-between">
                             <label htmlFor={id} className="font-semibold capitalize">
@@ -25,11 +27,12 @@ export default function SavingsBucketInput({ label, id, placeholder }) {
                             </label>
                             <ErrorMessage error={error} />
                         </div>
-                        <SavingsBucketDropdown placeholder={placeholder} field={field} id={id} />
-                    </div >
-                )
-                }
+                        <DateContainer placeholder={placeholder} field={field} id={id} />
+
+                    </div>
+                )}
             />
-        </div >
-    )
-}
+        </div>
+    );
+
+};

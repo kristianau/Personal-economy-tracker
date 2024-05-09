@@ -1,8 +1,8 @@
 
-import CurrencyInput from "./CurrencyInput"
+import CurrencyInput from "./CurrencyInput";
 import { Controller, useFormContext } from "react-hook-form"
-import ErrorMessage from "./ErrorMessage";
-import { findInputError } from "../utils/FindInputError";
+import ErrorMessage from "../Messages/ErrorMessage";
+import { findInputError } from "../../utils/FindInputError";
 
 // Validating amount input and currency dropdown with 1 controller
 
