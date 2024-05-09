@@ -1,17 +1,17 @@
 import Select from "react-select";
-import { currency } from "../utils/CurrencyOptions";
+import { savingsBuckets } from "../../utils/SavingsOptions";
 
-export default function CurrencyDropdown({ placeholder, field, id }) {
+export default function SavingsBucketDropdown({ placeholder, field, id }) {
 
     return (
         <Select
             id={id}
             onChange={field.onChange}
             value={field.value}
-            className="w-24 font-medium"
+            className="font-medium"
             name="currencySelect"
             isSearchable={false}
-            options={currency}
+            options={savingsBuckets}
             placeholder={placeholder}
         />
     )

@@ -1,4 +1,4 @@
-import CurrencyDropdown from "./CurrencyDropdown";
+import CurrencyDropdown from "../BaseElements/CurrencyDropdown";
 
 export default function CurrencyInput({ placeholder, field, id }) {
 

@@ -1,9 +1,9 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
-import DataInputs from "./IncomeDataInputs";
-import SuccessMessage from "./SuccessMessage";
+import DataInputs from "../DataInputs/SavingsDataInputs";
+import SuccessMessage from "../Messages/SuccessMessage";
 
-export default function IncomeForm() {
+export default function SavingsForm() {
     const methods = useForm();
     const [success, setSuccess] = useState(false);
 
