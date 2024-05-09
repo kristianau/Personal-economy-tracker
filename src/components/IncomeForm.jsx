@@ -1,6 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
-import DataInputs from "./IncomeDataInput";
+import DataInputs from "./IncomeDataInputs";
 
 import SuccessMessage from "./SuccessMessage";
 
@@ -16,13 +16,13 @@ export default function IncomeForm() {
 
     return (
         <FormProvider {...methods}>
-            <form 
+            <form
                 onSubmit={e => e.preventDefault()}
                 noValidate
                 className="container"
             >
                 <DataInputs />
-                
+
                 <div className="mt-5">
 
                     <SuccessMessage success={success} />
