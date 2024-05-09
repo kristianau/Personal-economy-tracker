@@ -8,10 +8,7 @@ export default function DataInputs() {
         <div className="grid gap-5 md:grid-cols-1">
             <InputField {...income_validation} />
             <AmountAndCurrency {...amount_validation} />
-
             <DateInput {...date_validation} />
-
-
         </div>
     )
 }

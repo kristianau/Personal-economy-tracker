@@ -1,7 +1,6 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import DataInputs from "./IncomeDataInputs";
-
 import SuccessMessage from "./SuccessMessage";
 
 export default function IncomeForm() {
