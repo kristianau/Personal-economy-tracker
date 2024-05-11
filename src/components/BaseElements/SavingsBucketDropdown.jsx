@@ -8,7 +8,7 @@ export default function SavingsBucketDropdown({ placeholder, field, id }) {
             id={id}
             onChange={field.onChange}
             value={field.value}
-            className="font-medium"
+            className="font-medium w-full"
             name="currencySelect"
             isSearchable={false}
             options={savingsBuckets}

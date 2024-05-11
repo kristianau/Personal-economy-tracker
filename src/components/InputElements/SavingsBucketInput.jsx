@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import SavingsBucketDropdown from "../BaseElements/SavingsBucketDropdown";
 import { Controller, useFormContext } from "react-hook-form";
 import ErrorMessage from "../Messages/ErrorMessage";
+import Modal from "../BaseElements/EditSavingsModal";
 
 export default function SavingsBucketInput({ label, id, placeholder }) {
 
     const { control } = useFormContext();
+    const [modal, setModal] = useState(false);
 
     return (
         <div className="flex flex-col w-full gap-2">
@@ -25,7 +27,13 @@ export default function SavingsBucketInput({ label, id, placeholder }) {
                             </label>
                             <ErrorMessage error={error} />
                         </div>
-                        <SavingsBucketDropdown placeholder={placeholder} field={field} id={id} />
+                        <div className="flex flex-row gap-2 items-center">
+                            <SavingsBucketDropdown placeholder={placeholder} field={field} id={id} />
+                            <button className="w-24 font-medium rounded border-solid border py-1 px-5 border-slate-300"
+                                onClick={() => setModal(true)}
+                            >Edit</button>
+                            {modal && <Modal setModal={setModal} />}
+                        </div>
                     </div >
                 )
                 }
