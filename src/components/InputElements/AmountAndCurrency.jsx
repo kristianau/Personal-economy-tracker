@@ -39,11 +39,11 @@ export default function AmountAndCurrency({ amountLabel, amountType, amountId, a
                         {inputError.error ? <ErrorMessage error={inputError.error} /> : error ? <ErrorMessage error={error} /> : <ErrorMessage error={false} />}
                     </div>
 
-                    <div className="flex flex-row gap-2 items-end">
+                    <div className="flex flex-row gap-2 items-center">
                         <input
                             id={amountId}
                             type={amountType}
-                            className=" p-2 font-medium border rounded-md border-slate-300 placeholder:opacity-60"
+                            className="p-2 font-medium border rounded-md border-slate-300 placeholder:opacity-60"
                             placeholder={amountPlaceholder}
                             {...register(name, validation)}
                         />
