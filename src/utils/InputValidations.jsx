@@ -52,6 +52,6 @@ export const amount_validation = {
 
 export const savings_bucket_data = {
   id: 'num',
-  placeholder: 'Savings goal category',
+  placeholder: 'Category',
   label: 'Savings goal'
 }
