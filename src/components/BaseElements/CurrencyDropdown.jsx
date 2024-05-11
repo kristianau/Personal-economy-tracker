@@ -1,5 +1,5 @@
 import Select from "react-select";
-import { currency } from "../utils/CurrencyOptions";
+import { currency } from "../../utils/CurrencyOptions";
 
 export default function CurrencyDropdown({ placeholder, field, id }) {
 

@@ -1,8 +1,8 @@
 import React from "react";
-import DateContainer from "./DateContainer";
+import DateContainer from "../BaseElements/DateContainer";
 import "react-datepicker/dist/react-datepicker.css"
 import { Controller, useFormContext } from "react-hook-form";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../Messages/ErrorMessage";
 
 
 export default function DateInput({ label, id, placeholder }) {

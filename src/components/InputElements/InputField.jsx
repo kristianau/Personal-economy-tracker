@@ -1,9 +1,9 @@
-import { findInputError } from "../utils/FindInputError"
+import { findInputError } from "../../utils/FindInputError"
 import { useFormContext } from "react-hook-form"
-import ErrorMessage from "./ErrorMessage"
+import ErrorMessage from "../Messages/ErrorMessage";
 
 export default function InputField({ label, type, id, placeholder, validation, name }) {
-    const { 
+    const {
         register,
         formState: { errors },
     } = useFormContext();
@@ -18,7 +18,7 @@ export default function InputField({ label, type, id, placeholder, validation, n
                 </label>
                 <ErrorMessage error={inputError.error} />
             </div>
-            <input 
+            <input
                 id={id}
                 type={type}
                 className="w-full p-2 font-medium border rounded-md border-slate-300 placeholder:opacity-60"

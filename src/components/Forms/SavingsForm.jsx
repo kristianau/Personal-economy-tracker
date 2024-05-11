@@ -1,8 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
-import DataInputs from "./SavingsDataInputs";
-
-import SuccessMessage from "./SuccessMessage";
+import DataInputs from "../DataInputs/SavingsDataInputs";
+import SuccessMessage from "../Messages/SuccessMessage";
 
 export default function SavingsForm() {
     const methods = useForm();

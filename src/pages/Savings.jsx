@@ -1,4 +1,4 @@
-import SavingsForm from "../components/SavingsForm";
+import SavingsForm from "../components/Forms/SavingsForm";
 
 export default function SavingsPage() {
     return (

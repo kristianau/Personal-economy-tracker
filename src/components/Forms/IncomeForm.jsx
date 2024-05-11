@@ -1,8 +1,7 @@
 import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
-import DataInputs from "./IncomeDataInputs";
-
-import SuccessMessage from "./SuccessMessage";
+import DataInputs from "../DataInputs/IncomeDataInputs";
+import SuccessMessage from "../Messages/SuccessMessage";
 
 export default function IncomeForm() {
     const methods = useForm();
