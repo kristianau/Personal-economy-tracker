@@ -22,15 +22,15 @@ export default function SavingsForm() {
             >
                 <DataInputs />
 
-                <div className="mt-5">
+                <div className="flex flex-col items-center mt-5">
 
                     <SuccessMessage success={success} />
 
                     <button
                         onClick={onSubmit}
-                        className="flex items-center gap-1 p-5 font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600"
+                        className="flex items-center gap-1 p-4 px-6 font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-600"
                     >
-                        Submit Form
+                        Submit
                     </button>
                 </div>
             </form>
