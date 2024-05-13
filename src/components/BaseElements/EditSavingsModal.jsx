@@ -1,19 +1,32 @@
 import React, { useState } from 'react'
 import { savingsBuckets } from '../../utils/SavingsOptions'
+import camelCase from '../../utils/CamelCaseConverter';
 
 export default function Modal({ setModal }) {
 
     const [savings, setSavings] = useState(savingsBuckets);
+    const [newItem, setNewItem] = useState('');
 
     function handleRemove(id) {
         const newList = savings.filter((item) => item.id !== id);
         setSavings(newList);
     }
 
-    const handleSave = (updatedSavings) => {
+    function handleSave(updatedSavings) {
         // Update the original list
         savingsBuckets.splice(0, savingsBuckets.length, ...updatedSavings);
         setSavings(updatedSavings);
+    }
+
+    function handleAdd() {
+        if (newItem.trim() !== '') {
+            const newId = Math.max(...savings.map(item => item.id)) + 1;
+            const newValue = camelCase(newItem);
+            const newItemObj = { id: newId, value: newValue, label: newItem };
+            setSavings([...savings, newItemObj]);
+            setNewItem('');
+            console.log(newItemObj);
+        }
     }
 
     return (
@@ -32,13 +45,18 @@ export default function Modal({ setModal }) {
                     ))}
                 </ul>
                 <div>
-                    <button className='outline outline-1 outline-[#101f20] bg-[#101f20] text-white py-2 px-4 hover:bg-transparent hover:text-black'
+                    <input type='text' onChange={(e) => setNewItem(e.target.value)} className='p-2 font-medium border rounded-md border-slate-300 placeholder:opacity-60' />
+                    <button type='button' onClick={handleAdd} className='w-24 font-medium rounded border-solid border py-1 px-6 border-slate-300'>Add</button>
+                </div>
+
+                <div>
+                    <button type='button' className='outline outline-1 outline-[#101f20] bg-[#101f20] text-white py-2 px-4 hover:bg-transparent hover:text-black'
                         onClick={() => {
                             handleSave(savings);
                             setModal(false);
                         }}
                     >Save</button>
-                    <button className='outline outline-1 outline-[#101f20] bg-[#101f20] text-white py-2 px-4 hover:bg-transparent hover:text-black'
+                    <button type='button' className='outline outline-1 outline-[#101f20] bg-[#101f20] text-white py-2 px-4 hover:bg-transparent hover:text-black'
                         onClick={() => setModal(false)}
                     >Cancel</button>
                 </div>
