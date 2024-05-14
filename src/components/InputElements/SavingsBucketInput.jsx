@@ -28,7 +28,7 @@ export default function SavingsBucketInput({ label, id, placeholder }) {
                         </div>
                         <div className="flex flex-row gap-2 items-center">
                             <SavingsBucketDropdown placeholder={placeholder} field={field} id={id} />
-                            <ModalButton />
+                            <ModalButton id={id} />
                         </div>
                     </div >
                 )

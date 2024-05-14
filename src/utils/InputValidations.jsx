@@ -92,8 +92,8 @@ export const savings_amount_validation = {
   name: 'num',
   amountLabel: 'Amount',
   amountType: 'number',
-  amountId: 'num',
-  currencyId: 'currency',
+  amountId: 'savingsAmount',
+  currencyId: 'savingsCurrency',
   amountPlaceholder: 'Amount to save',
   currencyPlaceholder: 'XXX',
   validation: {
@@ -109,7 +109,13 @@ export const savings_amount_validation = {
 }
 
 export const savings_bucket_data = {
-  id: 'num',
+  id: 'savingsBucket',
   placeholder: 'Category',
   label: 'Savings goal'
+}
+
+export const expenses_category_data = {
+  id: 'expensesCategory',
+  placeholder: 'Category',
+  label: 'Expenses categories'
 }

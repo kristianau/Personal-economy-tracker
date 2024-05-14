@@ -1,18 +1,19 @@
 import React, { useState } from 'react'
-import { savingsBuckets } from '../../utils/SavingsOptions'
 import camelCase from '../../utils/CamelCaseConverter'
 import SavingsList from './SavingsBucketList'
 
-export default function Modal({ setModal }) {
+export default function Modal({ setModal, options }) {
 
-    const [savings, setSavings] = useState(savingsBuckets);
+    const [savings, setSavings] = useState(options);
     const [newItem, setNewItem] = useState('');
 
 
     function handleSave(updatedSavings) {
         // Update the original list
-        savingsBuckets.splice(0, savingsBuckets.length, ...updatedSavings);
+        options.splice(0, options.length, ...updatedSavings);
+
         setSavings(updatedSavings);
+        setModal(false);
     }
 
     function handleAdd() {
@@ -43,7 +44,6 @@ export default function Modal({ setModal }) {
                         <button type='button' className='w-28 font-semibold rounded border-solid border py-1 px-6 border-slate-300 hover:bg-slate-300'
                             onClick={() => {
                                 handleSave(savings);
-                                setModal(false);
                             }}
                         >SAVE</button>
                         <button type='button' className='w-28 font-semibold rounded border-solid border py-1 px-6 border-slate-300 hover:bg-slate-300'
