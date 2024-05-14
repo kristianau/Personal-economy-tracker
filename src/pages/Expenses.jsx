@@ -1,5 +1,10 @@
+import ExpensesForm from "../components/Forms/ExpensesForm";
+
 export default function ExpensesPage() {
     return (
-        <h1 className="capitalize underline font-semibold text-lg text-red-800">expenses</h1>
+        <div className="flex flex-col gap-6 justify-center mt-3 mx-72 px-40 pt-10">
+            <h1 className="text-5xl text-center text-pretty underline">Expenses</h1>
+            <ExpensesForm />
+        </div>
     );
 };
