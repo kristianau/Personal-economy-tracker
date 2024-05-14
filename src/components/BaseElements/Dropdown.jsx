@@ -1,11 +1,11 @@
 import Select from "react-select";
-import { savingsBuckets } from "../../utils/SavingsOptions";
+import { savingsOptions } from "../../utils/SavingsOptions";
 import { expensesOptions } from "../../utils/ExpensesOptions";
 
-export default function SavingsBucketDropdown({ placeholder, field, id }) {
+export default function Dropdown({ placeholder, field, id }) {
 
     let multiple = false;
-    let options = savingsBuckets;
+    let options = savingsOptions;
     if (id === "expensesCategory") {
         multiple = true;
         options = expensesOptions;

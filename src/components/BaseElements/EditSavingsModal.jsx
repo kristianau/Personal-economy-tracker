@@ -4,24 +4,23 @@ import SavingsList from './SavingsBucketList'
 
 export default function Modal({ setModal, options }) {
 
-    const [savings, setSavings] = useState(options);
+    const [items, setItems] = useState(options);
     const [newItem, setNewItem] = useState('');
 
 
-    function handleSave(updatedSavings) {
+    function handleSave(updatedItems) {
         // Update the original list
-        options.splice(0, options.length, ...updatedSavings);
-
-        setSavings(updatedSavings);
+        options.splice(0, options.length, ...updatedItems);
+        setItems(updatedItems);
         setModal(false);
     }
 
     function handleAdd() {
         if (newItem.trim() !== '') {
-            const newId = Math.max(...savings.map(item => item.id)) + 1;
+            const newId = Math.max(...options.map(item => item.id)) + 1;
             const newValue = camelCase(newItem);
             const newItemObj = { id: newId, value: newValue, label: newItem };
-            setSavings([...savings, newItemObj]);
+            setItems([...items, newItemObj]);
             setNewItem('');
             console.log(newItemObj);
         }
@@ -33,7 +32,7 @@ export default function Modal({ setModal, options }) {
                 <h1 className='font-bold text-center text-2xl pb-4'>Edit savings categories</h1>
                 <div className="flex flex-col w-full gap-2">
 
-                    <SavingsList savings={savings} setSavings={setSavings} />
+                    <SavingsList items={items} setItems={setItems} />
 
                     <div className="flex flex-row gap-2 items-center my-4">
                         <input type='text' onChange={(e) => setNewItem(e.target.value)} placeholder='New savings category' className='p-2 font-medium border rounded-md border-black placeholder:opacity-60 bg-green-100' />
@@ -43,7 +42,7 @@ export default function Modal({ setModal, options }) {
                     <div className="flex flex-row gap-2 justify-center">
                         <button type='button' className='w-28 font-semibold rounded border-solid border py-1 px-6 border-slate-300 hover:bg-slate-300'
                             onClick={() => {
-                                handleSave(savings);
+                                handleSave(items);
                             }}
                         >SAVE</button>
                         <button type='button' className='w-28 font-semibold rounded border-solid border py-1 px-6 border-slate-300 hover:bg-slate-300'

@@ -1,6 +1,6 @@
 import Modal from "./EditSavingsModal";
 import { useState } from "react";
-import { savingsBuckets } from '../../utils/SavingsOptions'
+import { savingsOptions } from '../../utils/SavingsOptions'
 import { expensesOptions } from '../../utils/ExpensesOptions'
 
 export default function ModalButton({ id }) {
@@ -11,9 +11,8 @@ export default function ModalButton({ id }) {
     if (id === "expensesCategory") {
         options = expensesOptions;
     } else {
-        options = savingsBuckets;
+        options = savingsOptions;
     }
-
 
     return (
         <>

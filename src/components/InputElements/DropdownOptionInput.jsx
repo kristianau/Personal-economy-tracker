@@ -1,10 +1,10 @@
 import React from "react";
-import SavingsBucketDropdown from "../BaseElements/SavingsBucketDropdown";
+import Dropdown from "../BaseElements/Dropdown";
 import { Controller, useFormContext } from "react-hook-form";
 import ErrorMessage from "../Messages/ErrorMessage";
 import ModalButton from "../BaseElements/ButtonToModal";
 
-export default function SavingsBucketInput({ label, id, placeholder }) {
+export default function DropdownOptionInput({ label, id, placeholder }) {
 
     const { control } = useFormContext();
 
@@ -27,7 +27,7 @@ export default function SavingsBucketInput({ label, id, placeholder }) {
                             <ErrorMessage error={error} />
                         </div>
                         <div className="flex flex-row gap-2 items-center">
-                            <SavingsBucketDropdown placeholder={placeholder} field={field} id={id} />
+                            <Dropdown placeholder={placeholder} field={field} id={id} />
                             <ModalButton id={id} />
                         </div>
                     </div >
