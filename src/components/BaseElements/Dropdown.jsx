@@ -12,7 +12,7 @@ export default function Dropdown({ placeholder, field, id }) {
     }
 
     // Ensure that field.value is always an array when multiple is true
-    const selectedValue = multiple ? (Array.isArray(field.value) ? field.value : []) : field.value;
+    const selectedValue = multiple ? (Array.isArray(field.value) ? field.value : [field.value]) : field.value;
 
     return (
         <Select
@@ -20,6 +20,7 @@ export default function Dropdown({ placeholder, field, id }) {
             onChange={field.onChange}
             defaultValue={selectedValue}
             multiple={multiple}
+            isMulti={multiple}
             className="font-medium w-full"
             name="currencySelect"
             isSearchable={false}
