@@ -114,6 +114,12 @@ export const savings_bucket_data = {
   label: 'Savings goal'
 }
 
+export const spend_saved_money = {
+  id: 'spendFromSavings',
+  placeholder: 'Savings',
+  label: 'Spend from savings'
+}
+
 export const expenses_category_data = {
   id: 'expensesCategory',
   placeholder: 'Category',

@@ -3,6 +3,7 @@ import { expenses_validation, date_validation, expenses_amount_validation, expen
 import DateInput from "../InputElements/DateInput";
 import AmountAndCurrency from "../InputElements/AmountAndCurrency";
 import DropdownOptionInput from "../InputElements/DropdownOptionInput";
+import ConditionalSavingsInput from "../InputElements/ConditionalSavingsInput";
 
 export default function DataInputs() {
     return (
@@ -11,6 +12,7 @@ export default function DataInputs() {
             <AmountAndCurrency {...expenses_amount_validation} />
             <DateInput {...date_validation} />
             <DropdownOptionInput {...expenses_category_data} />
+            <ConditionalSavingsInput />
         </div>
     )
 }
