@@ -48,9 +48,7 @@ export default function AmountAndCurrency({ amountLabel, amountType, amountId, a
                         />
                         <CurrencyDropdown placeholder={currencyPlaceholder} field={field} id={currencyId} />
                     </div>
-
                 </div>
-
             )} />
     );
 }

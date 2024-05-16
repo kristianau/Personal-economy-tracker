@@ -23,7 +23,6 @@ export default function CurrencyDropdown({ placeholder, field, id }) {
             isSearchable={false}
             options={currency}
             placeholder={placeholder}
-
         />
     )
 }
