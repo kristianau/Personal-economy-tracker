@@ -49,7 +49,7 @@ export const expenses_validation = {
 
 
 export const income_amount_validation = {
-  name: 'num',
+  name: 'incomeAmount',
   amountLabel: 'Amount',
   amountType: 'number',
   amountId: 'num',

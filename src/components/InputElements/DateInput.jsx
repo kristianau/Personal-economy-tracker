@@ -14,7 +14,7 @@ export default function DateInput({ label, id, placeholder }) {
         <div className="flex flex-col w-full gap-2">
             <Controller
                 /* wrapping DatePicker in Controller so I can register and validate input with react-hook-forms*/
-                name="dateController"
+                name="date"
                 control={control}
                 rules={{
                     required: 'required',
@@ -28,7 +28,6 @@ export default function DateInput({ label, id, placeholder }) {
                             <ErrorMessage error={error} />
                         </div>
                         <DateContainer placeholder={placeholder} field={field} id={id} />
-
                     </div>
                 )}
             />

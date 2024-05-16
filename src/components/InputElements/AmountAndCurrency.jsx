@@ -1,8 +1,7 @@
-
-import CurrencyInput from "./CurrencyInput";
 import { Controller, useFormContext } from "react-hook-form"
 import ErrorMessage from "../Messages/ErrorMessage";
 import { findInputError } from "../../utils/FindInputError";
+import CurrencyDropdown from "../BaseElements/CurrencyDropdown";
 
 // Validating amount input and currency dropdown with 1 controller
 
@@ -23,7 +22,7 @@ export default function AmountAndCurrency({ amountLabel, amountType, amountId, a
     return (
 
         <Controller
-            name="amountAndCurrencyController"
+            name="currency"
             control={control}
             rules={{
                 required: 'required',
@@ -47,11 +46,9 @@ export default function AmountAndCurrency({ amountLabel, amountType, amountId, a
                             placeholder={amountPlaceholder}
                             {...register(name, validation)}
                         />
-                        <CurrencyInput placeholder={currencyPlaceholder} field={field} id={currencyId} />
+                        <CurrencyDropdown placeholder={currencyPlaceholder} field={field} id={currencyId} />
                     </div>
-
                 </div>
-
             )} />
     );
 }
