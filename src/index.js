@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import "./index.css";
-import NavBar from './components/NavigationBar/NavBar';
+import Routing from './components/Navigation/Routing';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +13,7 @@ root.render(
 export default function App() {
   return (
     <div>
-      <NavBar />
+      <Routing />
     </div>
   );
 };
