@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+//THIS FILE IS NOT USED
+
 //const imageUrl = "https://yesno.wtf/api";
 //const imageUrl = "https://api.adviceslip.com/advice";
 const imageUrl = "https://dog.ceo/api/breeds/image/random";
