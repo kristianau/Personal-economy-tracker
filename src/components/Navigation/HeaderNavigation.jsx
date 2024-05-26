@@ -1,14 +1,19 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 export default function HeaderNavigation() {
+
+    const [home, setHome] = useState(true);
+    const location = useLocation();
+
     return (
         <div className="h-screen flex flex-col">
-            <nav className="bg-gray-400">
-                <div className="flex flex-row justify-center py-10 gap-60">
-                    <NavLink to="/" className="py-7 px-10 min-w-32 border-solid border border-cyan-700 rounded text-center font-semibold tracking-widest bg-cyan-600 hover:bg-cyan-500">
+            <nav className="bg-white border-b-2 border-b-gray-200">
+                <div className="flex flex-row justify-center py-4 gap-5">
+                    <NavLink to="/" onClick={() => setHome(true)} className={"py-7 min-w-32 text-center font-semibold tracking-widest hover:underline decoration-2 " + (home && location.pathname === "/" ? "underline decoration-2" : "")}>
                         HOME
                     </NavLink>
-                    <NavLink to="/add" className="py-7 px-10 min-w-32 border-solid border border-cyan-700 rounded text-center font-semibold tracking-widest bg-cyan-600 hover:bg-cyan-500">
+                    <NavLink to="/add" onClick={() => setHome(false)} className={"py-7 min-w-32 text-center font-semibold tracking-widest hover:underline decoration-2 " + (home && location.pathname === "/" ? "" : "underline decoration-2")}>
                         ADD
                     </NavLink>
                 </div>
