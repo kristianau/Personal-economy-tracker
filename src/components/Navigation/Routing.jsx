@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeaderNavigation from "./HeaderNavigation";
 import HomePage from "../../pages/Home";
 import AddPage from "../../pages/Add";
-import SelectToAddPage from "../../pages/Options";
 import ExpensesPage from "../../pages/Expenses";
 import IncomePage from "../../pages/Income";
 import SavingsPage from "../../pages/Savings";
@@ -42,7 +41,6 @@ export default function Routing() {
                 <Route path="/" element={<HeaderNavigation />}>
                     <Route index element={<ProtectedRoute user={user}><HomePage /></ProtectedRoute>} />
                     <Route path="add" element={<ProtectedRoute user={user}><AddPage /></ProtectedRoute>}>
-                        <Route index element={<ProtectedRoute user={user}><SelectToAddPage /></ProtectedRoute>} />
                         <Route path="expenses" element={<ProtectedRoute user={user}><ExpensesPage /></ProtectedRoute>} />
                         <Route path="income" element={<ProtectedRoute user={user}><IncomePage /></ProtectedRoute>} />
                         <Route path="savings" element={<ProtectedRoute user={user}><SavingsPage /></ProtectedRoute>} />
