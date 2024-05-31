@@ -2,15 +2,30 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import DataInputs from "../DataInputs/SavingsDataInputs";
 import SuccessMessage from "../Messages/SuccessMessage";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function SavingsForm() {
     const methods = useForm();
     const [success, setSuccess] = useState(false);
 
-    const onSubmit = methods.handleSubmit(data => {
-        console.log(data);
+    const savingsCollection = collection(db, "savings")
+
+    const onSubmit = methods.handleSubmit(async data => {
+        console.log(data)
+        try {
+            await addDoc(savingsCollection, {
+                amount: data.num,
+                currency: data.currency,
+                savingsGoal: data.dropdownOptionController.value,
+            });
+        }
+        catch (err) {
+            console.log(err)
+        }
         methods.reset();
         setSuccess(true);
+
     })
 
     return (
