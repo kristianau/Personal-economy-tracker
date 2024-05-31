@@ -2,15 +2,30 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import DataInputs from "../DataInputs/IncomeDataInputs";
 import SuccessMessage from "../Messages/SuccessMessage";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function IncomeForm() {
     const methods = useForm();
     const [success, setSuccess] = useState(false);
 
-    const onSubmit = methods.handleSubmit(data => {
-        console.log(data);
+    const incomeCollection = collection(db, "income")
+
+    const onSubmit = methods.handleSubmit(async data => {
+        try {
+            await addDoc(incomeCollection, {
+                amount: data.incomeAmount,
+                currency: data.currency,
+                date: data.date,
+                income: data.income,
+            });
+        }
+        catch (err) {
+            console.log(err)
+        }
         methods.reset();
         setSuccess(true);
+
     })
 
     return (
