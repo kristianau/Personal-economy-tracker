@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Dropdown from "../BaseElements/Dropdown";
 import { Controller, useFormContext } from "react-hook-form";
 import ErrorMessage from "../Messages/ErrorMessage";
 import ModalButton from "../BaseElements/ButtonToModal";
+import { db } from "../../firebase";
+import { getDocs, collection } from "firebase/firestore";
 
 export default function DropdownOptionInput({ label, id, placeholder }) {
 
     const { control } = useFormContext();
+
+    // Fetch dropdown data from db
+    const [options, setOptions] = useState([]);
+
+    let multiple = false;
+    let collectionName = "savingsGoal";
+    if (id === "expensesCategory") {
+        multiple = true;
+        collectionName = "expensesCategory";
+    }
+    const collectionRef = collection(db, collectionName);
+
+    useEffect(() => {
+        const getOptions = async () => {
+            // Read the data
+            try {
+                const data = await getDocs(collectionRef);
+                const filteredData = data.docs.map((doc) => ({ ...doc.data() }))
+                setOptions(filteredData)
+            } catch (err) {
+                console.error(err)
+            }
+            // Set the savings options list
+        }
+        getOptions();
+    }, [collectionRef])
 
     return (
         <div className="flex flex-col w-full gap-2">
@@ -27,8 +55,8 @@ export default function DropdownOptionInput({ label, id, placeholder }) {
                             <ErrorMessage error={error} />
                         </div>
                         <div className="flex flex-row gap-2 items-center">
-                            <Dropdown placeholder={placeholder} field={field} id={id} />
-                            <ModalButton id={id} />
+                            <Dropdown placeholder={placeholder} field={field} options={options} multiple={multiple} id={id} />
+                            <ModalButton options={options} />
                         </div>
                     </div >
                 )

@@ -1,15 +1,7 @@
 import Select from "react-select";
-import { savingsOptions } from "../../utils/SavingsOptions";
-import { expensesOptions } from "../../utils/ExpensesOptions";
 
-export default function Dropdown({ placeholder, field, id }) {
+export default function Dropdown({ placeholder, field, options, multiple, id }) {
 
-    let multiple = false;
-    let options = savingsOptions;
-    if (id === "expensesCategory") {
-        multiple = true;
-        options = expensesOptions;
-    }
 
     // Ensure that field.value is always an array when multiple is true
     const selectedValue = multiple ? (Array.isArray(field.value) ? field.value : [field.value]) : field.value;
@@ -17,7 +9,6 @@ export default function Dropdown({ placeholder, field, id }) {
     return (
         <Select
             id={id}
-            onChange={field.onChange}
             defaultValue={selectedValue}
             multiple={multiple}
             isMulti={multiple}
