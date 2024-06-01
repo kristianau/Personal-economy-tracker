@@ -1,28 +1,74 @@
 import React, { useState } from 'react'
 import camelCase from '../../utils/CamelCaseConverter'
 import SavingsList from './SavingsBucketList'
+import { collection, deleteDoc, doc, addDoc } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 export default function Modal({ setModal, options }) {
 
     const [items, setItems] = useState(options);
     const [newItem, setNewItem] = useState('');
 
+    const savingsBucketCollection = collection(db, "savingsGoal");
 
-    function handleSave(updatedItems) {
-        // Update the original list
-        options.splice(0, options.length, ...updatedItems);
-        setItems(updatedItems);
+    async function handleSave() {
+        // Filter out unique items between database list and ui list
+        const unique = []
+        for (var i = 0; i < items.length; i++) {
+            for (var j = 0; j < options.length; j++) {
+                if (items[i].id === options[j].id) break;
+            }
+            unique.push(items[i]);
+        }
+
+        // keep or delete items from the original savings option list
+        for (i = 0; i < options.length; i++) {
+            var deleteItem = true;
+            for (j = 0; j < unique.length; j++) {
+                if (options[i].id === unique[j].id) {
+                    deleteItem = false;
+                    break;
+                }
+            }
+            if (deleteItem) {
+                const itemDoc = doc(db, "savingsGoal", options[i].docId)
+                await deleteDoc(itemDoc);
+            }
+        }
+
+        // add new items to the db
+        for (i = 0; i < unique.length; i++) {
+            var addItem = true;
+            for (j = 0; j < options.length; j++) {
+                if (unique[i].id === options[j].id) {
+                    addItem = false;
+                    break;
+                }
+            }
+            if (addItem) {
+                try {
+                    await addDoc(savingsBucketCollection, {
+                        id: unique[i].id,
+                        label: unique[i].label,
+                        value: unique[i].value,
+                    });
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            }
+        }
+        // close the modal
         setModal(false);
     }
 
     function handleAdd() {
         if (newItem.trim() !== '') {
-            const newId = Math.max(...options.map(item => item.id)) + 1;
+            const newId = Math.max(...items.map(item => item.id)) + 1;
             const newValue = camelCase(newItem);
             const newItemObj = { id: newId, value: newValue, label: newItem };
             setItems([...items, newItemObj]);
             setNewItem('');
-            console.log(newItemObj);
         }
     }
 
@@ -42,7 +88,7 @@ export default function Modal({ setModal, options }) {
                     <div className="flex flex-row gap-2 justify-center">
                         <button type='button' className='w-28 font-semibold rounded border-solid border py-1 px-6 border-slate-300 hover:bg-slate-300'
                             onClick={() => {
-                                handleSave(items);
+                                handleSave();
                             }}
                         >SAVE</button>
                         <button type='button' className='w-28 font-semibold rounded border-solid border py-1 px-6 border-slate-300 hover:bg-slate-300'
