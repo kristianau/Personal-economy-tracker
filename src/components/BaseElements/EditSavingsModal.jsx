@@ -4,12 +4,16 @@ import SavingsList from './SavingsBucketList'
 import { collection, deleteDoc, doc, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 
-export default function Modal({ setModal, options }) {
+export default function Modal({ setModal, options, isExpenses }) {
 
     const [items, setItems] = useState(options);
     const [newItem, setNewItem] = useState('');
+    let dbName = null;
 
-    const savingsBucketCollection = collection(db, "savingsGoal");
+    if (isExpenses) dbName = "expensesCategory"
+    else dbName = "savingsGoal"
+
+    const collectionRef = collection(db, dbName);
 
     async function handleSave() {
         // Filter out unique items between database list and ui list
@@ -31,7 +35,7 @@ export default function Modal({ setModal, options }) {
                 }
             }
             if (deleteItem) {
-                const itemDoc = doc(db, "savingsGoal", options[i].docId)
+                const itemDoc = doc(db, dbName, options[i].docId)
                 await deleteDoc(itemDoc);
             }
         }
@@ -47,7 +51,7 @@ export default function Modal({ setModal, options }) {
             }
             if (addItem) {
                 try {
-                    await addDoc(savingsBucketCollection, {
+                    await addDoc(collectionRef, {
                         id: unique[i].id,
                         label: unique[i].label,
                         value: unique[i].value,
@@ -75,7 +79,7 @@ export default function Modal({ setModal, options }) {
     return (
         <div className='w-screen h-screen bg-black bg-opacity-30 fixed top-0 right-0 flex justify-center items-center'>
             <div className='bg-white pt-5 p-10 rounded-md shadow-md'>
-                <h1 className='font-bold text-center text-2xl pb-4'>Edit savings categories</h1>
+                <h1 className='font-bold text-center text-2xl pb-4'>{isExpenses ? "Edit expenses categories" : "Edit savings categories"}</h1>
                 <div className="flex flex-col w-full gap-2">
 
                     <SavingsList items={items} setItems={setItems} />

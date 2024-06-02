@@ -13,6 +13,7 @@ export default function DropdownOptionInput({ label, id, placeholder }) {
     // Fetch dropdown data from db
     const [options, setOptions] = useState([]);
 
+    // if it is expenses dropdown then user should be able to select multiple categories
     let multiple = false;
     let collectionName = "savingsGoal";
     if (id === "expensesCategory") {
@@ -56,7 +57,7 @@ export default function DropdownOptionInput({ label, id, placeholder }) {
                         </div>
                         <div className="flex flex-row gap-2 items-center">
                             <Dropdown placeholder={placeholder} field={field} options={options} multiple={multiple} id={id} />
-                            <ModalButton options={options} />
+                            <ModalButton options={options} isExpenses={multiple} />
                         </div>
                     </div >
                 )
