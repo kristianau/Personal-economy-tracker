@@ -9,6 +9,7 @@ export default function Dropdown({ placeholder, field, options, multiple, id }) 
     return (
         <Select
             id={id}
+            onChange={field.onChange}
             defaultValue={selectedValue}
             multiple={multiple}
             isMulti={multiple}
