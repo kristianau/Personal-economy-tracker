@@ -18,6 +18,7 @@ export default function SavingsForm() {
                 amount: data.num,
                 currency: data.currency,
                 savingsGoal: data.dropdownOptionController.value,
+                date: data.date,
             });
         }
         catch (err) {
