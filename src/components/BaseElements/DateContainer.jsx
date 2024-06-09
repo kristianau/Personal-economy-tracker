@@ -1,8 +1,8 @@
 import DatePicker from "react-datepicker";
 
-export default function DateContainer({ placeholder, field, id }){
+export default function DateContainer({ placeholder, field, id }) {
     const today = new Date();
-    
+
     return (
         <DatePicker
             id={id}
@@ -10,9 +10,10 @@ export default function DateContainer({ placeholder, field, id }){
             selected={field.value}
             className="w-full p-2 font-medium border rounded-md border-slate-300 placeholder:opacity-60"
             placeholderText={placeholder}
-            maxDate={today} 
-            minDate={null} 
+            maxDate={today}
+            minDate={null}
             dateFormat="dd/MM/yyyy"
+            calendarStartDay={1}
         />
     );
 }
