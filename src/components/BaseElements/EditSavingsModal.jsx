@@ -77,7 +77,7 @@ export default function Modal({ setModal, options, isExpenses }) {
     }
 
     return (
-        <div className='w-screen h-screen bg-black bg-opacity-30 fixed top-0 right-0 flex justify-center items-center'>
+        <div className='w-screen h-screen bg-black bg-opacity-30 fixed top-0 right-0 flex justify-center items-center z-10'>
             <div className='bg-white pt-5 p-10 rounded-md shadow-md'>
                 <h1 className='font-bold text-center text-2xl pb-4'>{isExpenses ? "Edit expenses categories" : "Edit savings categories"}</h1>
                 <div className="flex flex-col w-full gap-2">
