@@ -2,15 +2,39 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useState } from "react";
 import DataInputs from "../DataInputs/ExpensesDataInputs";
 import SuccessMessage from "../Messages/SuccessMessage";
+import { collection, addDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function ExpensesForm() {
     const methods = useForm();
     const [success, setSuccess] = useState(false);
 
-    const onSubmit = methods.handleSubmit(data => {
-        console.log(data);
+    const expensesCollection = collection(db, "expenses")
+
+    const onSubmit = methods.handleSubmit(async data => {
+
+        let savingsCategory = ""
+        if (data.takenFromSavings)
+            savingsCategory = data.savingsCategory
+
+
+        try {
+            await addDoc(expensesCollection, {
+                amount: data.num,
+                categories: data.categories,
+                currency: data.currency,
+                date: data.date,
+                expenses: data.expenses,
+                savingsCategory: savingsCategory,
+                takenFromSavings: data.takenFromSavings,
+            });
+        }
+        catch (err) {
+            console.log(err)
+        }
         methods.reset();
         setSuccess(true);
+
     })
 
     return (

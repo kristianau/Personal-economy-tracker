@@ -33,7 +33,7 @@ export default function TakeFromSavingsDropdown({ label, id, placeholder }) {
         <div className="flex flex-col w-full gap-2">
             <Controller
                 /* wrapping DatePicker in Controller so I can register and validate input with react-hook-forms*/
-                name="dropdownOptionController"
+                name="takenFromSavingsCategory"
                 control={control}
                 rules={{
                     required: 'required',

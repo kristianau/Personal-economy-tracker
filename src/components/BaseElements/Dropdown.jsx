@@ -2,7 +2,6 @@ import Select from "react-select";
 
 export default function Dropdown({ placeholder, field, options, multiple, id }) {
 
-
     // Ensure that field.value is always an array when multiple is true
     const selectedValue = multiple ? (Array.isArray(field.value) ? field.value : [field.value]) : field.value;
 
