@@ -1,5 +1,6 @@
 import Select from "react-select";
 import { currency } from "../../utils/CurrencyOptions";
+import { customStylesCurrency } from "../../utils/CustomStyles";
 
 export default function CurrencyDropdown({ placeholder, field, id }) {
 
@@ -18,7 +19,7 @@ export default function CurrencyDropdown({ placeholder, field, id }) {
             id={id}
             onChange={handleCurrencyChange}
             value={selectedOption}
-            className="w-24 font-medium"
+            styles={customStylesCurrency}
             name="currencySelect"
             isSearchable={false}
             options={currency}
