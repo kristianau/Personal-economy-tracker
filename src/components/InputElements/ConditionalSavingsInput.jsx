@@ -19,6 +19,7 @@ export default function ConditionalSavingsInput() {
                     value={isChecked}
                     type="checkbox"
                     checked={isChecked}
+                    className="hover:cursor-pointer"
                     onChange={() => setIsChecked(!isChecked)}
                 />
                 Money taken from savings

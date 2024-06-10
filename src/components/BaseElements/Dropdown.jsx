@@ -1,4 +1,5 @@
 import Select from "react-select";
+import { customStylesOptions } from "../../utils/CustomStyles";
 
 export default function Dropdown({ placeholder, field, options, multiple, id }) {
 
@@ -12,7 +13,7 @@ export default function Dropdown({ placeholder, field, options, multiple, id }) 
             defaultValue={selectedValue}
             multiple={multiple}
             isMulti={multiple}
-            className="font-medium w-full"
+            styles={customStylesOptions}
             name="currencySelect"
             isSearchable={false}
             options={options}
