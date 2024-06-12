@@ -27,7 +27,7 @@ export default function DropdownOptionInput({ label, id, placeholder }) {
             // Read the data
             try {
                 const data = await getDocs(collectionRef);
-                const filteredData = data.docs.map((doc) => ({ ...doc.data(), docId: doc.id }))
+                const filteredData = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
                 setOptions(filteredData)
             } catch (err) {
                 console.error(err)

@@ -7,7 +7,7 @@ import { db } from '../../firebase';
 export default function Modal({ setModal, options, isExpenses }) {
 
     const [items, setItems] = useState(options);
-    const [newItem, setNewItem] = useState('');
+    const [newItem, setNewItem] = useState("");
     let dbName = null;
 
     if (isExpenses) dbName = "expensesCategory"
@@ -20,31 +20,34 @@ export default function Modal({ setModal, options, isExpenses }) {
         const unique = []
         for (var i = 0; i < items.length; i++) {
             for (var j = 0; j < options.length; j++) {
-                if (items[i].id === options[j].id) break;
+                if (items[i].editItemTag === options[j].editItemTag) break;
             }
             unique.push(items[i]);
         }
 
-        // keep or delete items from the original savings option list
+        // 1. if the item is in db and unique items list (not in ui list) then it should be removed from db
+        // 2. if the item is in ui and unique items list (not in db) then it is new and should be added to db
+
+        // 1. keep or delete items from the original savings option list
         for (i = 0; i < options.length; i++) {
             var deleteItem = true;
             for (j = 0; j < unique.length; j++) {
-                if (options[i].id === unique[j].id) {
+                if (options[i].editItemTag === unique[j].editItemTag) {
                     deleteItem = false;
                     break;
                 }
             }
             if (deleteItem) {
-                const itemDoc = doc(db, dbName, options[i].docId)
+                const itemDoc = doc(db, dbName, options[i].id)
                 await deleteDoc(itemDoc);
             }
         }
 
-        // add new items to the db
+        // 2. add new items to the db
         for (i = 0; i < unique.length; i++) {
             var addItem = true;
             for (j = 0; j < options.length; j++) {
-                if (unique[i].id === options[j].id) {
+                if (unique[i].editItemTag === options[j].editItemTag) {
                     addItem = false;
                     break;
                 }
@@ -52,7 +55,7 @@ export default function Modal({ setModal, options, isExpenses }) {
             if (addItem) {
                 try {
                     await addDoc(collectionRef, {
-                        id: unique[i].id,
+                        editItemTag: unique[i].editItemTag,
                         label: unique[i].label,
                         value: unique[i].value,
                     });
@@ -68,12 +71,12 @@ export default function Modal({ setModal, options, isExpenses }) {
 
     function handleAdd() {
         if (newItem.trim() !== '') {
-            const newId = Math.max(...items.map(item => item.id)) + 1;
+            const newId = Math.max(...items.map(item => item.editItemTag), 0) + 1;
             const newValue = camelCase(newItem);
-            const newItemObj = { id: newId, value: newValue, label: newItem };
-            setItems([...items, newItemObj]);
-            setNewItem('');
+            const newItemObj = { editItemTag: newId, value: newValue, label: newItem };
+            items.push(newItemObj)
         }
+        setNewItem("");
     }
 
     return (
